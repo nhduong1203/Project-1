@@ -17,7 +17,7 @@ class Ant:
     vehicle_travel_time: Thời gian kiến di chuyển\n
     travel_path: Danh sách địa điểm mà kiến đã di chuyển qua\n
     arrivel_time: Danh sách thời gian kiến ghé thăm các địa điểm trên path\n
-    index_to_visit: Danh sách node thỏa mãn các điều kiện ràng buộc\n
+    index_to_visit: Danh sách node chưa thăm\n
     total_travel_distance: Tổng quãng đường di chuyển của kiến\n
 
 
@@ -193,101 +193,4 @@ class Ant:
             current_ind = next_ind
         return distance
 
-    "Thực hiện local search"
-    @staticmethod
-    def local_search_once(graph: Construct_Graph, travel_path: list, travel_distance: float, i_start, stop_event: Event):
-
-        depot_ind = []
-        for ind in range(len(travel_path)):
-            if graph.nodes[travel_path[ind]].is_depot:
-                depot_ind.append(ind)
-
-        for i in range(i_start, len(depot_ind)):
-            for j in range(i + 1, len(depot_ind)):
-
-                if stop_event.is_set():
-                    return None, None, None
-
-                for start_a in range(depot_ind[i - 1] + 1, depot_ind[i]):
-                    for end_a in range(start_a, min(depot_ind[i], start_a + 6)):
-                        for start_b in range(depot_ind[j - 1] + 1, depot_ind[j]):
-                            for end_b in range(start_b, min(depot_ind[j], start_b + 6)):
-                                if start_a == end_a and start_b == end_b:
-                                    continue
-                                new_path = []
-                                new_path.extend(travel_path[:start_a])
-                                new_path.extend(travel_path[start_b:end_b + 1])
-                                new_path.extend(travel_path[end_a:start_b])
-                                new_path.extend(travel_path[start_a:end_a])
-                                new_path.extend(travel_path[end_b + 1:])
-
-                                depot_before_start_a = depot_ind[i - 1]
-
-                                depot_before_start_b = depot_ind[j - 1] + (end_b - start_b) - (end_a - start_a) + 1
-                                if not graph.nodes[new_path[depot_before_start_b]].is_depot:
-                                    raise RuntimeError('error')
-
-                                success_route_a = False
-                                check_ant = Ant(graph, new_path[depot_before_start_a])
-                                for ind in new_path[depot_before_start_a + 1:]:
-                                    if check_ant.check_condition(ind):
-                                        check_ant.move_to_next_index(ind)
-                                        if graph.nodes[ind].is_depot:
-                                            success_route_a = True
-                                            break
-                                    else:
-                                        break
-
-                                check_ant.clear()
-                                del check_ant
-
-                                success_route_b = False
-                                check_ant = Ant(graph, new_path[depot_before_start_b])
-                                for ind in new_path[depot_before_start_b + 1:]:
-                                    if check_ant.check_condition(ind):
-                                        check_ant.move_to_next_index(ind)
-                                        if graph.nodes[ind].is_depot:
-                                            success_route_b = True
-                                            break
-                                    else:
-                                        break
-                                check_ant.clear()
-                                del check_ant
-
-                                if success_route_a and success_route_b:
-                                    new_path_distance = Ant.cal_total_travel_distance(graph, new_path)
-                                    if new_path_distance < travel_distance:
-
-                                        for temp_ind in range(1, len(new_path)):
-                                            if graph.nodes[new_path[temp_ind]].is_depot and graph.nodes[new_path[temp_ind - 1]].is_depot:
-                                                new_path.pop(temp_ind)
-                                                break
-                                        return new_path, new_path_distance, i
-                                else:
-                                    new_path.clear()
-
-        return None, None, None
-
-    def local_search_procedure(self, stop_event: Event):
-
-        new_path = copy.deepcopy(self.travel_path)
-        new_path_distance = self.total_travel_distance
-        times = 100
-        count = 0
-        i_start = 1
-        while count < times:
-            temp_path, temp_distance, temp_i = Ant.local_search_once(self.graph, new_path, new_path_distance, i_start, stop_event)
-            if temp_path is not None:
-                count += 1
-
-                del new_path, new_path_distance
-                new_path = temp_path
-                new_path_distance = temp_distance
-
-                i_start = (i_start + 1) % (new_path.count(0)-1)
-                i_start = max(i_start, 1)
-            else:
-                break
-
-        self.travel_path = new_path
-        self.total_travel_distance = new_path_distance
+    
