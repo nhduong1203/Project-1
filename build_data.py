@@ -13,7 +13,7 @@ def input_data():
 
     stops = list()
 
-    file_path = "c102.txt"
+    file_path = "get_data.txt"
 
     with open("data/passengers.txt", "r") as datafile:
         lines = list(datafile)
