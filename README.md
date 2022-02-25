@@ -61,3 +61,50 @@ Sau đó có thể thực biện biên dịch chương trình.
 ### Kết quả
 
 Sau khi biên dịch chương trình, kết quả của bài toán sẽ được ghi vào file result.txt trong cùng thư mục.
+
+File kết quả chứa thông tin về thời gian chạy chương trình, tuyến đường di chuyển của đội xe, số lượng xe sử dụng và tổng quãng đường di chuyển.
+
+```
+**************************************************
+Time is up: solution in given time(1 minutes)
+It takes 60.008 second from multiple_ant_colony_system running
+The best path have found is:
+Vehicle 1: 0 113 118 83 143 176 128 4 72 82 84 191 60 0
+
+Vehicle 2: 0 62 131 44 192 146 97 14 96 130 15 198 0
+
+Vehicle 3: 0 101 159 38 150 22 151 16 140 187 142 111 63 0
+
+Vehicle 4: 0 30 48 50 156 112 168 79 29 87 42 123 175 0
+
+Vehicle 5: 0 45 178 27 173 154 24 61 100 64 162 74 28 196 0
+
+Vehicle 6: 0 190 5 180 35 126 71 9 1 99 144 166 0
+
+Vehicle 7: 0 20 85 41 80 31 25 172 77 110 109 0
+
+Vehicle 8: 0 164 66 12 129 11 6 122 139 73 116 147 155 0
+
+Vehicle 9: 0 93 119 193 46 125 33 121 165 188 108 34 10 0
+
+Vehicle 10: 0 57 78 58 184 199 37 81 138 55 183 56 0
+
+Vehicle 11: 0 148 103 197 200 141 69 51 174 136 189 124 0
+
+Vehicle 12: 0 170 134 152 40 153 169 89 105 59 133 149 68 0
+
+Vehicle 13: 0 21 23 182 75 163 194 145 195 52 92 0
+
+Vehicle 14: 0 177 18 54 104 132 7 181 117 49 137 135 0
+
+Vehicle 15: 0 161 3 88 8 186 127 98 157 185 53 114 0
+
+Vehicle 16: 0 32 65 86 94 115 171 91 95 158 106 67 0
+
+Vehicle 17: 0 76 120 26 13 43 2 90 17 19 102 179 0
+
+Vehicle 18: 0 36 160 47 70 167 39 107 0
+
+Best path distance is 3846.528864, best vehicle_num is 18
+**************************************************
+```
