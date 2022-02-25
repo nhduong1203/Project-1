@@ -37,15 +37,17 @@ pip3 install -r requirements.txt
 
 ### Dữ liệu đầu vào
 
-Dữ liệu đầu vào được miêu tả trong hình dưới đây. Trong đó, có các thông tin:
-Cust No: Số thứ tự của Node, Node 0 sẽ là kho hàng.
-XCoord : Tọa độ x của Node
-YCoord : Tọa đọ y của Node
-Demand : Nhu cầu giao hàng ở Node 
-Ready Time : Thời gian Node bắt đầu mở cửa
-Due Time   : Thời gian Node đóng cửa
-Service time : Thời gian xe phục vụ tại Node
+* Dữ liệu đầu vào được miêu tả trong hình dưới đây. Trong đó, có các thông tin:
+* Cust No: Số thứ tự của Node, Node 0 sẽ là kho hàng.
+* XCoord : Tọa độ x của Node
+* YCoord : Tọa đọ y của Node
+* Demand : Nhu cầu giao hàng ở Node 
+* Ready Time : Thời gian Node bắt đầu mở cửa
+* Due Time   : Thời gian Node đóng cửa
+* Service time : Thời gian xe phục vụ tại Node
 
 ![alt text](https://github.com/nhduong1203/Project-1/blob/main/data/data.png)
 
+### File dữ liệu đầu vào
 
+Đường dẫn chứa file dữ liệu đầu vào được lưu vào biến filepath trong hàm main
