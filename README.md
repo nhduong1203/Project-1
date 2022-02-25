@@ -34,3 +34,6 @@ pip3 install -r requirements.txt
 ```
 
 ## Hướng dẫn sử dụng
+
+### Dữ liệu đầu vào
+
