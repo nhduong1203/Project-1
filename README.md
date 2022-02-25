@@ -48,6 +48,16 @@ pip3 install -r requirements.txt
 
 ![alt text](https://github.com/nhduong1203/Project-1/blob/main/data/data.png)
 
-### File dữ liệu đầu vào
+### Truyền file dữ liệu đầu vào
 
-Đường dẫn chứa file dữ liệu đầu vào được lưu vào biến filepath trong hàm main
+Đường dẫn chứa file dữ liệu đầu vào được lưu vào biến file_path trong hàm main
+
+```
+file_path = './data/200_customer/C1_2_2.txt'
+```
+
+Sau đó có thể thực biện biên dịch chương trình.
+
+### Kết quả
+
+Sau khi biên dịch chương trình, kết quả của bài toán sẽ được ghi vào file result.txt trong cùng thư mục.
